@@ -1,0 +1,647 @@
+/* Global Background */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(10, 10, 35, 0.9) 30%, rgba(0, 0, 0, 0.8) 100%), 
+              url('/kbs.png') center/cover no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  position: relative;
+  z-index: -1;
+}
+/* Crossed-out Lifeline */
+.lifeline-btn.crossed {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+/* Add these new styles to your existing CSS */
+
+/* Timer Stop Button */
+.timer-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; /* Reduced margin */
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  width: 90%;
+  gap: 10px; /* Reduced gap */
+  margin-top: 10px; /* Adjusted margin */
+}
+.timer {
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.timer-stop-btn {
+  background: #ffcc00;
+  color: black;
+  font-size: .8rem;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.timer-resume-btn {
+  background: #ffcc00;
+  color: black;
+  font-size: .8rem;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.timer-stop-btn:hover {
+  background: #e6b800;
+  transform: scale(1.05);
+}
+/* Reveal Answer Button */
+.reveal-btn {
+  background: #00cc66;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.reveal-btn:hover {
+  background: #00994d;
+  transform: scale(1.05);
+}
+
+/* Locked Answer */
+.option-btn.locked {
+  background: yellow !important;
+  color: black !important;
+}
+
+/* Correct Answer */
+.option-btn.correct {
+  background: green !important;
+  border-color: lime !important;
+  animation: correctBlink 0.5s 2;
+}
+
+@keyframes correctBlink {
+  0%, 100% { background: green; }
+  50% { background: #00ff00; }
+}
+
+/* Incorrect Answer */
+.option-btn.incorrect {
+  background: red !important;
+  border-color: darkred !important;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Keep all existing styles from previous version */
+/* ... (rest of your existing CSS remains the same) */
+
+.lifeline-btn.crossed::before {
+  content: "❌";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: red;
+  z-index: 1;
+}
+/* Common styles for all spotlights */
+.spotlight {
+  position: absolute;
+  width: 50px;
+  height: 800px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(0, 0, 255, 0));
+  opacity: 0.7;
+  filter: blur(10px);
+  transform: rotate(20deg);
+  mix-blend-mode: screen;
+  z-index: 1; /* Ensure spotlights are behind clickable elements */
+  pointer-events: none; /* Prevent spotlights from blocking clicks */
+}
+
+/* Different spotlights positioned around the game */
+.spotlight1 { top: -10%; left: 10%; animation: moveSpotlight1 3s infinite alternate ease-in-out; }
+.spotlight2 { top: -10%; left: 30%; animation: moveSpotlight2 4s infinite alternate ease-in-out; }
+.spotlight3 { top: -10%; left: 50%; animation: moveSpotlight3 3s infinite alternate ease-in-out; }
+.spotlight4 { top: -10%; left: 70%; animation: moveSpotlight4 9s infinite alternate ease-in-out; }
+.spotlight5 { top: -10%; left: 90%; animation: moveSpotlight5 10s infinite alternate ease-in-out; }
+
+/* Spotlight Animations */
+@keyframes moveSpotlight1 {
+  0% { transform: rotate(15deg) translateY(0px); }
+  50% { transform: rotate(10deg) translateY(20px); }
+  100% { transform: rotate(15deg) translateY(0px); }
+}
+
+@keyframes moveSpotlight2 {
+  0% { transform: rotate(-15deg) translateY(0px); }
+  50% { transform: rotate(-10deg) translateY(30px); }
+  100% { transform: rotate(-15deg) translateY(0px); }
+}
+
+@keyframes moveSpotlight3 {
+  0% { transform: rotate(0deg) translateY(0px); }
+  50% { transform: rotate(5deg) translateY(40px); }
+  100% { transform: rotate(0deg) translateY(0px); }
+}
+
+@keyframes moveSpotlight4 {
+  0% { transform: rotate(20deg) translateY(0px); }
+  50% { transform: rotate(15deg) translateY(25px); }
+  100% { transform: rotate(20deg) translateY(0px); }
+}
+
+@keyframes moveSpotlight5 {
+  0% { transform: rotate(-20deg) translateY(0px); }
+  50% { transform: rotate(-10deg) translateY(35px); }
+  100% { transform: rotate(-20deg) translateY(0px); }
+}
+
+/* Timer Stop Button */
+
+
+/* Locked Option */
+.option-btn.locked {
+  background: yellow;
+  color: black;
+}
+
+/* Reveal Answer Button */
+.reveal-btn {
+  background: #00cc66;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.reveal-btn:hover {
+  background: #00994d;
+  transform: scale(1.05);
+}
+
+
+/* Left and Right Images in Top Corners */
+.side-image {
+  position: absolute;
+  top: 10px;
+  width: 300px; /* Adjust size */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.side-image:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.left {
+  left: 10px;
+}
+
+.right {
+  right: 10px;
+}
+
+.center-image {
+  width: 300px;
+  display: block;
+  margin: 10px auto 10px; /* Add margin to keep space */
+  position: relative; /* Keep it in flow */
+  z-index: 2; /* Ensure it stays above other elements */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.center-image:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.home-page .center-image {
+  width: 300px; /* Bigger in Home */
+}
+
+.game-page .center-image,
+.gameover-page .center-image {
+  width: 150px; /* Smaller in Game & GameOver */
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #2c0068, #000000);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Prevents any unwanted scrolling */
+  animation: fadeIn 1s ease-in; /* Smooth fade-in for the entire container */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Title */
+.game-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 10px yellow;
+  animation: fadeIn 1s ease-in; /* Smooth fade-in */
+}
+
+/* Player Name */
+.player-name {
+  font-size: 2rem;
+  margin-bottom: 3px;
+  animation: fadeIn 1s ease-in; /* Smooth fade-in */
+}
+
+/* Timer */
+.timer {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: red;
+  animation: fadeIn 1s ease-in; /* Smooth fade-in */
+}
+
+/* Question Box */
+.question-container {
+  background: linear-gradient(90deg, #0e0033, #3e008c);
+  border: 3px solid gold;
+  border-radius: 15px;
+  padding: 10px;
+  width: 90%;
+  max-width: 1300px;
+  box-shadow: 0px 0px 20px gold;
+  animation: slideUp 0.5s ease-out;
+  margin: 5px auto;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.question {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Show Options Button */
+.show-options-btn {
+  background: #ffcc00;
+  color: black;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.show-options-btn:hover {
+  background: #e6b800;
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Options Container (2x2 Grid) */
+/* Options Container */
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.option-btn {
+  width: 100%;
+  max-width: 500px;
+  height: 80px;
+  background: linear-gradient(90deg, #150040, #4b009f);
+  color: white;
+  font-size: 1.5rem;
+  border: 2px solid gold;
+  cursor: pointer;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+}
+.option-btn:hover {
+  background: linear-gradient(90deg, #2c0088, #5a00ff);
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Selected, Correct, and Incorrect Answers */
+.option-btn.selected {
+  background: orange;
+}
+
+.option-btn.correct {
+  background: green;
+  border-color: yellow;
+  animation: correctBlink 0.5s 2; /* Subtle blink for correct answer */
+}
+
+@keyframes correctBlink {
+  0%, 100% {
+    background: green;
+  }
+  50% {
+    background: lime;
+  }
+}
+
+.option-btn.incorrect {
+  background: red;
+  border-color: darkred;
+  animation: shake 0.5s; /* Subtle shake for incorrect answer */
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Lock Button */
+.lock-btn {
+  background: gold;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #ffcc00;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.lock-btn:hover {
+  background: #ffdd44;
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Next Button */
+.next-btn {
+  background: #00cc66;
+  color: white;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.next-btn:hover {
+  background: #00994d;
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Lifeline Container */
+.lifeline-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+/* Lifeline Buttons */
+.lifeline-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  background: purple;
+  color: white;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.lifeline-btn:hover {
+  background: darkviolet;
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Used Lifeline - Cross Mark */
+.lifeline-btn.used {
+  background: gray;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* 📌 Move Audience Poll to Bottom Left */
+.poll-container {
+  position: fixed;
+  bottom: 10px; /* Place at the bottom */
+  left: 10px; /* Align to the left */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px; /* Adjust width */
+  max-width: 350px; /* Ensure it doesn’t take too much space */
+  z-index: 3; /* Keep it above other elements */
+  box-shadow: 0px 0px 10px gold;
+  animation: fadeIn 1s ease-in; /* Smooth fade-in */
+}
+
+/* 📌 Point Ladder - Smaller & Adjusted */
+.point-ladder {
+  position: fixed;
+  top: 15%;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2rem; /* Smaller text */
+  width: 180px; /* Reduced width */
+  text-align: center;
+  height: 650px; /* Reduced height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 8px gold;
+  animation: fadeIn 1s ease-in; /* Smooth fade-in */
+}
+
+/* 📌 Ladder Steps - Smaller & Cleaner */
+.ladder-step {
+  padding: 10px;
+  margin: 2px 0;
+  background: gray;
+  border-radius: 5px;
+  font-size: 1.1rem; /* Reduced text size */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease; /* Smooth hover effect */
+}
+
+.ladder-step.current {
+  background: orange;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border: 2px solid white;
+}
+
+.ladder-step.won {
+  background: green;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .poll-container {
+    width: 250px;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .center-image {
+    width: 150px; /* Adjust center image for small screens */
+  }
+
+  .game-container {
+    padding: 10px;
+  }
+
+  .game-title {
+    font-size: 2.2rem;
+  }
+
+  .player-name, .timer {
+    font-size: 1.3rem;
+  }
+
+  .question {
+    font-size: 1.5rem;
+  }
+
+  .option-btn {
+    font-size: 1.2rem;
+  }
+
+  .lock-btn, .next-btn, .lifeline-btn {
+    font-size: 1.1rem;
+  }
+}
+
+/* Expert Container */
+.expert-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Ensure it's above other elements */
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Expert Box */
+.expert-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Expert Image */
+.expert-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid gold;
+}
+
+/* Expert Response */
+.expert-response {
+  font-size: 18px;
+  font-weight: bold;
+  color: gold;
+  margin-top: 10px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

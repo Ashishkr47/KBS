@@ -1,0 +1,38 @@
+.gameover-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 50px;
+    color: gold;
+  }
+  
+  h2 {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+  
+  .restart-btn {
+    padding: 15px 30px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border-radius: 12px;
+    transition: 0.3s;
+    margin-top: 20px;
+  }
+  
+  .restart-btn:hover {
+    background: #0056b3;
+  }
+  
