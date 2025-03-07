@@ -1,0 +1,128 @@
+/* Background */
+.home-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: radial-gradient(circle, #0a0f30, #020a1a);
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+.light-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(255, 223, 0, 0.3) 10%, rgba(0, 0, 0, 0) 70%);
+  transform: translate(-50%, -50%);
+  z-index: 0; /* Keep it in the background */
+  pointer-events: none; /* Prevents blocking interactions */
+}
+
+
+@keyframes pulseLight {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.5; }
+}
+
+/* Title */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px gold;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.name-input {
+  position: relative;
+  z-index: 2; /* Higher z-index so it's above the light effect */
+  padding: 12px;
+  font-size: 1.2rem;
+  width: 280px;
+  text-align: center;
+  border: 2px solid gold;
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+/* Placeholder Text */
+.name-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+.start-btn {
+  position: relative;
+  z-index: 2; /* Ensure button is above the light effect */
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: gold;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  background-color: darkgoldenrod;
+}
+
+
+/* Disabled Button */
+.start-btn:disabled {
+  background: gray;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Footer Text */
+.footer-text {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+/* Images */
+.side-image {
+  position: absolute;
+  width: 100px;
+  filter: drop-shadow(0 0 2px white);
+}
+
+.left {
+  top: 10%;
+  left: 5%;
+}
+
+.right {
+  top: 10%;
+  right: 5%;
+}
+
+.center-image.large {
+  width: 200px;
+  margin-bottom: 10px;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  0% { filter: drop-shadow(0 0 10px yellow); }
+  100% { filter: drop-shadow(0 0 20px gold); }
+}
