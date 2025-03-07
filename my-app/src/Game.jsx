@@ -11,7 +11,7 @@ import "chart.js/auto";
 import "./Game.css";
 
 const optionLabels = ["A", "B", "C", "D"];
-const pointLadder = [100, 200, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000];
+const pointLadder = [100, 200, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000,100000];
 
 function Game({ playerName, endGame }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
